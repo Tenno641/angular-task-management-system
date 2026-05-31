@@ -3,7 +3,9 @@ import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'header-component',
-  imports: [],
+  imports: [
+    NgOptimizedImage
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
