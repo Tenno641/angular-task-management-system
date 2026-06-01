@@ -14,4 +14,8 @@ export class AppComponent {
   title = 'first-angular-name';
   users: User[] = DUMMY_USERS;
   protected readonly DUMMY_USERS = DUMMY_USERS;
+
+  onSelectedUser(userId: string): void {
+    console.log("User clicked" + userId);
+  }
 }
