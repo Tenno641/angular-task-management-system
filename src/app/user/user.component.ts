@@ -11,7 +11,7 @@ export class UserComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
   @Input({ required: true }) avatar!: string;
-  @Output() selected = new EventEmitter();
+  @Output() selected = new EventEmitter<string>();
 
   get imagePath(): string {
     return "assets/users/" + this.avatar;

@@ -21,6 +21,8 @@
       <app-user [userId]="DUMMY_USERS[5].id" [name]="DUMMY_USERS[5].name" [avatar]="DUMMY_USERS[5].avatar" (selected)="onSelectedUser($event)"/>
     </li>
   </ul>
+
+  <app-ticket [name]="selectedUser.name"/>
 </main>
 
 <router-outlet />
