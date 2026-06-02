@@ -16,4 +16,11 @@ export class TicketComponent {
   get userTasks(): Task[] | undefined {
     return this.tasks.filter(task => task.userId === this.user.id);
   }
+
+  removeTask(taskId: string): void {
+    const index = this.tasks.findIndex(task => task.taskId === taskId);
+    if (index > -1) {
+      this.tasks.splice(index, 1);
+    }
+  }
 }

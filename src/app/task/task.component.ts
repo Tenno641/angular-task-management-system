@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output } from '@angular/core';
 import {type Task } from './DUMMY_TASKS';
 
 @Component({
@@ -9,8 +9,13 @@ import {type Task } from './DUMMY_TASKS';
 })
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
+  @Output() removed = new EventEmitter<string>();
 
   get selectedTask() {
     return this.task;
+  }
+
+  removeTask(taskId: string) {
+    this.removed.emit(taskId);
   }
 }
