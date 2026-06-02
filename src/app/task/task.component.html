@@ -1,0 +1,31 @@
+<div class="ticket">
+  <div class="ticket-date">
+    <p class="ticket-date-created">Created: {{ selectedTask.createdDate }}</p>
+    <p class="ticket-date-due">Due: {{ selectedTask.dueDate }}</p>
+  </div>
+  <div class="ticket-title">{{ selectedTask.title }}</div>
+  <div class="ticket-description">{{ selectedTask.description }}</div>
+  <div class="ticket-footer">
+    <div class="ticket-notes">
+      <h5>Note: {{ selectedTask.notes }}</h5>
+    </div>
+    <div class="ticket-related">
+      <div class="ticket-related-people">
+        <h4>People</h4>
+        <ul>
+          @for (user of selectedTask.relatedPeople; track user) {
+            <li><p>{{ user }}</p></li>
+          }
+        </ul>
+      </div>
+      <div class="ticket-related-tickets">
+        <h4>Tickets</h4>
+        <ul>
+          @for (ticket of selectedTask.relatedContent; track ticket) {
+            <li><p>{{ ticket }}</p></li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

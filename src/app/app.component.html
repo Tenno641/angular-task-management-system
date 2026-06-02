@@ -2,27 +2,18 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user [userId]="DUMMY_USERS[0].id" [name]="DUMMY_USERS[0].name" [avatar]="DUMMY_USERS[0].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
-    <li>
-      <app-user [userId]="DUMMY_USERS[1].id" [name]="DUMMY_USERS[1].name" [avatar]="DUMMY_USERS[1].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
-    <li>
-      <app-user [userId]="DUMMY_USERS[2].id" [name]="DUMMY_USERS[2].name" [avatar]="DUMMY_USERS[2].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
-    <li>
-      <app-user [userId]="DUMMY_USERS[3].id" [name]="DUMMY_USERS[3].name" [avatar]="DUMMY_USERS[3].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
-    <li>
-      <app-user [userId]="DUMMY_USERS[4].id" [name]="DUMMY_USERS[4].name" [avatar]="DUMMY_USERS[4].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
-    <li>
-      <app-user [userId]="DUMMY_USERS[5].id" [name]="DUMMY_USERS[5].name" [avatar]="DUMMY_USERS[5].avatar" (selected)="onSelectedUser($event)"/>
-    </li>
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [selected]="user.id === selectedUserId" [user]="user" (select)="onSelectedUser(user.id)" />
+      </li>
+    }
   </ul>
 
-  <app-ticket [name]="selectedUser.name"/>
+  @if (selectedUser) {
+    <app-ticket [user]="selectedUser"/>
+  } @else {
+    <p id="fallback">Please select user to show details</p>
+  }
 </main>
 
 <router-outlet />

@@ -12,12 +12,12 @@ import { TicketComponent } from './ticket/ticket.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  protected readonly DUMMY_USERS = DUMMY_USERS;
+  protected readonly users: User[] = DUMMY_USERS;
 
-  selectedUserId: string = DUMMY_USERS[0].id;
+  selectedUserId!: string;
 
-  get selectedUser(): User {
-    return DUMMY_USERS.find(user => user.id === this.selectedUserId) as User;
+  get selectedUser(): User | undefined {
+    return this.users.find(user => user.id === this.selectedUserId);
   }
 
   onSelectedUser(userId: string): void {
