@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output } from '@angular/core';
-import {type Task } from './DUMMY_TASKS';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {type Task} from './DUMMY_TASKS';
 
 @Component({
   selector: 'app-task',
@@ -8,7 +8,7 @@ import {type Task } from './DUMMY_TASKS';
   styleUrl: './task.component.css'
 })
 export class TaskComponent {
-  @Input({ required: true }) task!: Task;
+  @Input({required: true}) task!: Task;
   @Output() removed = new EventEmitter<string>();
 
   get selectedTask() {

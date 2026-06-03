@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { TaskComponent } from '../task/task.component';
-import { DUMMY_USERS, type User} from '../user/dummy-users';
-import { type Task, DUMMY_TASKS } from '../task/DUMMY_TASKS';
-import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
+import {Component, Input} from '@angular/core';
+import {TaskComponent} from '../task/task.component';
+import {type User} from '../user/dummy-users';
+import {DUMMY_TASKS, type Task} from '../task/DUMMY_TASKS';
+import {TaskDialogComponent} from '../task-dialog/task-dialog.component';
 
 @Component({
   selector: 'app-ticket',
@@ -11,8 +11,8 @@ import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent {
-  @Input({ required: true }) user!: User;
-  @Input({ required: true }) users!: User[];
+  @Input({required: true}) user!: User;
+  @Input({required: true}) users!: User[];
   tasks: Task[] = DUMMY_TASKS;
   isTaskDialogOpen: boolean = false;
 
@@ -32,7 +32,6 @@ export class TicketComponent {
   }
 
   onCloseTaskDialog(): void {
-
     this.isTaskDialogOpen = false;
   }
 

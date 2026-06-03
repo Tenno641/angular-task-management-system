@@ -1,4 +1,4 @@
-<button class="ticket-add-button" (click)="onOpenTaskDialog()">Create Task</button>
+<button (click)="onOpenTaskDialog()" class="ticket-add-button">Create Task</button>
 @if (isTaskDialogOpen) {
   <app-task-dialog [userId]="user.id" [tasks]="tasks" [users]="users" (dialogClosed)="onCloseTaskDialog()"/>
 }

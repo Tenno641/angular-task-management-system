@@ -1,10 +1,10 @@
-<header-component />
+<header-component/>
 
 <main>
   <ul id="users">
     @for (user of users; track user.id) {
       <li>
-        <app-user [selected]="user.id === selectedUserId" [user]="user" (select)="onSelectedUser(user.id)" />
+        <app-user [selected]="user.id === selectedUserId" [user]="user" (select)="onSelectedUser(user.id)"/>
       </li>
     }
   </ul>
@@ -16,4 +16,4 @@
   }
 </main>
 
-<router-outlet />
+<router-outlet/>

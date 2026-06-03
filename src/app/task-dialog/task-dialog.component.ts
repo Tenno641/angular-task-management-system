@@ -11,9 +11,9 @@ import {NgSelectComponent} from '@ng-select/ng-select';
   styleUrl: './task-dialog.component.css'
 })
 export class TaskDialogComponent {
-  @Input({ required: true }) tasks!: Task[];
-  @Input({ required: true }) users!: User[];
-  @Input({ required: true }) userId!: string;
+  @Input({required: true}) tasks!: Task[];
+  @Input({required: true}) users!: User[];
+  @Input({required: true}) userId!: string;
   @Output() dialogClosed = new EventEmitter();
 
   formModel: Task = {

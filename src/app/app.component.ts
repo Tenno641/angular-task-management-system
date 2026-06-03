@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.components';
-import { UserComponent } from './user/user.component';
-import { DUMMY_USERS, type User } from './user/dummy-users';
-import { TicketComponent } from './ticket/ticket.component';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {HeaderComponent} from './header/header.components';
+import {UserComponent} from './user/user.component';
+import {DUMMY_USERS, type User} from './user/dummy-users';
+import {TicketComponent} from './ticket/ticket.component';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,8 @@ import { TicketComponent } from './ticket/ticket.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  protected readonly users: User[] = DUMMY_USERS;
-
   selectedUserId!: string;
+  protected readonly users: User[] = DUMMY_USERS;
 
   get selectedUser(): User | undefined {
     return this.users.find(user => user.id === this.selectedUserId);
