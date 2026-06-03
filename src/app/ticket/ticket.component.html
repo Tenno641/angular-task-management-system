@@ -1,3 +1,7 @@
+<button class="ticket-add-button" (click)="onOpenTaskDialog()">Create Task</button>
+@if (isTaskDialogOpen) {
+  <app-task-dialog [userId]="user.id" [tasks]="tasks" [users]="users" (dialogClosed)="onCloseTaskDialog()"/>
+}
 @if (userTasks?.length !== 0) {
   @for (task of userTasks; track task) {
     <app-task [task]="task" (removed)="removeTask($event)"/>

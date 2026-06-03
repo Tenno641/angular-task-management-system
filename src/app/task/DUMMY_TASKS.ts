@@ -7,7 +7,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Finalize Q2 Marketing Plan",
     "description": "Complete and submit the Q2 marketing strategy document for executive review.",
     "notes": "Focus on social media growth targets and budget allocation.",
-    "relatedContent": [
+    "relatedTasks": [
       "Marketing Strategy Draft v3",
       "Q1 Performance Report"
     ],
@@ -24,7 +24,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Prepare Client Onboarding Materials",
     "description": "Create onboarding documentation and welcome package for new enterprise clients.",
     "notes": "Include updated pricing and support contact information.",
-    "relatedContent": [
+    "relatedTasks": [
       "Onboarding Checklist",
       "Service Catalog"
     ],
@@ -41,7 +41,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Website Accessibility Audit",
     "description": "Review the company website for WCAG compliance and identify improvements.",
     "notes": "Prioritize issues affecting navigation and screen readers.",
-    "relatedContent": [
+    "relatedTasks": [
       "Accessibility Guidelines",
       "Audit Template"
     ],
@@ -58,7 +58,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Product Launch Readiness Review",
     "description": "Verify all launch requirements are met before the upcoming product release.",
     "notes": "Coordinate with engineering and customer support teams.",
-    "relatedContent": [
+    "relatedTasks": [
       "Launch Checklist",
       "Release Notes"
     ],
@@ -75,7 +75,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Recruitment Pipeline Assessment",
     "description": "Evaluate current hiring pipeline and recommend improvements.",
     "notes": "Review candidate conversion rates and interview feedback.",
-    "relatedContent": [
+    "relatedTasks": [
       "Hiring Dashboard",
       "Candidate Survey Results"
     ],
@@ -92,7 +92,7 @@ export const DUMMY_TASKS: Task[] = [
     "title": "Customer Feedback Analysis",
     "description": "Analyze recent customer feedback and identify recurring issues and opportunities.",
     "notes": "Segment findings by customer tier and product area.",
-    "relatedContent": [
+    "relatedTasks": [
       "Customer Survey Responses",
       "Support Ticket Summary"
     ],
@@ -110,7 +110,7 @@ export type Task = {
   dueDate: string;
   title: string;
   description: string;
-  relatedContent: string[];
+  relatedTasks: string[];
   notes: string;
   relatedPeople: string[];
 }

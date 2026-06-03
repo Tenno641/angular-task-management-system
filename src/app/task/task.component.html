@@ -21,7 +21,7 @@
       <div class="ticket-related-tickets">
         <h4>Tickets</h4>
         <ul>
-          @for (ticket of selectedTask.relatedContent; track ticket) {
+          @for (ticket of selectedTask.relatedTasks; track ticket) {
             <li><p>{{ ticket }}</p></li>
           }
         </ul>

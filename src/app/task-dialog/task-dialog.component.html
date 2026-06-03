@@ -1,0 +1,62 @@
+<div class="backdrop" (click)="onDialogClosed()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form (ngSubmit)="onSubmitTask()">
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="formModel.title"/>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="formModel.dueDate"/>
+    </p>
+
+    <p>
+      <label for="description">Description</label>
+      <textarea id="description" rows="5" name="description" [(ngModel)]="formModel.description"></textarea>
+    </p>
+
+    <p>
+      <label for="notes">Notes</label>
+      <textarea id="notes" rows="2" name="notes" [(ngModel)]="formModel.notes"></textarea>
+    </p>
+
+    <p>
+      <label for="related-people">Related People</label>
+      <ng-select
+        name="relatedPeople"
+        id="related-people"
+        [items]="users"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        [hideSelected]="true"
+        bindLabel="name"
+        bindValue="name"
+        placeholder="Select User"
+        [(ngModel)]="formModel.relatedPeople">
+      </ng-select>
+    </p>
+
+    <p>
+      <label for="related-tasks">Related Tasks</label>
+      <ng-select
+        name="relatedTasks"
+        id="related-tasks"
+        [items]="tasks"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        [hideSelected]="true"
+        bindLabel="title"
+        bindValue="title"
+        placeholder="Select Task"
+        [(ngModel)]="formModel.relatedTasks">
+      </ng-select>
+    </p>
+
+    <p class="actions">
+      <button type="button" (click)="onDialogClosed()">Cancel</button>
+      <button type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
