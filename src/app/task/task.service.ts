@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable({providedIn: "root"})
 export class TaskService {
-  private tasks: Task[] = [
+  private readonly tasks: Task[] = [
     {
       taskId: "t1",
       "userId": "u1",
@@ -112,6 +112,13 @@ export class TaskService {
     return this.tasks.length;
   }
 
+  constructor() {
+    const tasks = localStorage.getItem("tasks");
+    if (tasks) {
+      this.tasks = JSON.parse(tasks);
+    }
+  }
+
   getUserTasks(userId: string): Task[] {
     return this.tasks.filter(task => task.userId === userId);
   }
@@ -121,13 +128,19 @@ export class TaskService {
     if (index > -1) {
       this.tasks.splice(index, 1);
     }
+    this.saveTasks();
   }
 
   addTask(task: Task) {
     this.tasks.push(task);
+    this.saveTasks();
   }
 
   getAllTasks() {
     return this.tasks;
+  }
+
+  private saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(this.tasks));
   }
 }
