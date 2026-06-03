@@ -22,7 +22,6 @@ export class TaskComponent {
   }
 
   removeTask(taskId: string) {
-    console.log(`clicked task to be deleted ${taskId}`);
     this.taskService.removeTask(taskId);
   }
 }

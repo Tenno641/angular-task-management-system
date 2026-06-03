@@ -109,7 +109,6 @@ export class TaskService {
   ]
 
   get Count() {
-    console.log(`count ${this.tasks.length}`)
     return this.tasks.length;
   }
 
@@ -118,7 +117,6 @@ export class TaskService {
   }
 
   removeTask(id: string) {
-    console.log(`received task id to be deleted ${id}`)
     const index = this.tasks.findIndex(task => task.taskId === id);
     if (index > -1) {
       this.tasks.splice(index, 1);

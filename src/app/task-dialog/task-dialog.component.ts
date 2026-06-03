@@ -39,7 +39,6 @@ export class TaskDialogComponent {
   onSubmitTask(): void {
     this.formModel.userId = this.userId;
     this.formModel.taskId = `t${crypto.randomUUID()}`;
-    console.log(this.formModel.taskId);
     this.taskService.addTask(this.formModel);
     this.dialogClosed.emit();
   }
