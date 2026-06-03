@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {type Task} from './DUMMY_TASKS';
+import {Component, Input} from '@angular/core';
+import type {Task} from './task.model';
+import {TaskService} from './task.service';
 
 @Component({
   selector: 'app-task',
@@ -9,13 +10,18 @@ import {type Task} from './DUMMY_TASKS';
 })
 export class TaskComponent {
   @Input({required: true}) task!: Task;
-  @Output() removed = new EventEmitter<string>();
+  private taskService: TaskService;
+
+  constructor(taskService: TaskService) {
+    this.taskService = taskService;
+  }
 
   get selectedTask() {
     return this.task;
   }
 
   removeTask(taskId: string) {
-    this.removed.emit(taskId);
+    console.log(`clicked task to be deleted ${taskId}`);
+    this.taskService.removeTask(taskId);
   }
 }

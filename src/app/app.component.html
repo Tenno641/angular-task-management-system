@@ -10,7 +10,7 @@
   </ul>
 
   @if (selectedUser) {
-    <app-ticket [users]="users" [user]="selectedUser"/>
+    <app-ticket [user]="selectedUser"/>
   } @else {
     <p id="fallback">Please select user to show details</p>
   }

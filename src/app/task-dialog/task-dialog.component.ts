@@ -1,8 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Task} from '../task/DUMMY_TASKS';
-import {User} from '../user/dummy-users';
+import type {Task} from '../task/task.model';
+import type {User} from '../user/user.model';
 import {FormsModule} from '@angular/forms';
 import {NgSelectComponent} from '@ng-select/ng-select';
+import {TaskService} from '../task/task.service';
+import {UserService} from '../user/user.service';
 
 @Component({
   selector: 'app-task-dialog',
@@ -11,12 +13,19 @@ import {NgSelectComponent} from '@ng-select/ng-select';
   styleUrl: './task-dialog.component.css'
 })
 export class TaskDialogComponent {
-  @Input({required: true}) tasks!: Task[];
-  @Input({required: true}) users!: User[];
   @Input({required: true}) userId!: string;
   @Output() dialogClosed = new EventEmitter();
+  users: User[];
+  tasks: Task[];
+  private taskService: TaskService;
 
-  formModel: Task = {
+  constructor(taskService: TaskService, userService: UserService) {
+    this.taskService = taskService;
+    this.users = userService.getAllUsers();
+    this.tasks = taskService.getAllTasks();
+  }
+
+  formModel : Task = {
     userId: '',
     taskId: '',
     title: '',
@@ -30,8 +39,9 @@ export class TaskDialogComponent {
 
   onSubmitTask(): void {
     this.formModel.userId = this.userId;
-    this.formModel.taskId = `t${this.tasks.length + 1}`;
-    this.tasks.push(this.formModel);
+    this.formModel.taskId = `t${crypto.randomUUID()}`;
+    console.log(this.formModel.taskId);
+    this.taskService.addTask(this.formModel);
     this.dialogClosed.emit();
   }
 

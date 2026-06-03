@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './header/header.components';
 import {UserComponent} from './user/user.component';
-import {DUMMY_USERS, type User} from './user/dummy-users';
 import {TicketComponent} from './ticket/ticket.component';
+import {UserService} from './user/user.service';
+import {User} from './user/user.model';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,16 @@ import {TicketComponent} from './ticket/ticket.component';
 })
 export class AppComponent {
   selectedUserId!: string;
-  protected readonly users: User[] = DUMMY_USERS;
+  users: User[];
+  private userService: UserService;
 
-  get selectedUser(): User | undefined {
-    return this.users.find(user => user.id === this.selectedUserId);
+  constructor(userService: UserService) {
+    this.userService = userService;
+    this.users = userService.getAllUsers();
+  }
+
+  get selectedUser(): User {
+    return this.userService.getUserById(this.selectedUserId)!;
   }
 
   onSelectedUser(userId: string): void {

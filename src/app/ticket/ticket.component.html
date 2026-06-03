@@ -1,10 +1,10 @@
 <button (click)="onOpenTaskDialog()" class="ticket-add-button">Create Task</button>
 @if (isTaskDialogOpen) {
-  <app-task-dialog [userId]="user.id" [tasks]="tasks" [users]="users" (dialogClosed)="onCloseTaskDialog()"/>
+  <app-task-dialog [userId]="user.id" (dialogClosed)="onCloseTaskDialog()"/>
 }
 @if (userTasks?.length !== 0) {
   @for (task of userTasks; track task) {
-    <app-task [task]="task" (removed)="removeTask($event)"/>
+    <app-task [task]="task"/>
   }
 } @else {
   <h3 style="display: inline-block">User doesn't have tasks</h3>

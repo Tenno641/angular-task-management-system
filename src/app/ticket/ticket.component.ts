@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from '../task/task.component';
-import {type User} from '../user/dummy-users';
-import {DUMMY_TASKS, type Task} from '../task/DUMMY_TASKS';
+import type {User} from '../user/user.model';
 import {TaskDialogComponent} from '../task-dialog/task-dialog.component';
+import {TaskService} from '../task/task.service';
+import type {Task} from '../task/task.model'
 
 @Component({
   selector: 'app-ticket',
@@ -12,19 +13,15 @@ import {TaskDialogComponent} from '../task-dialog/task-dialog.component';
 })
 export class TicketComponent {
   @Input({required: true}) user!: User;
-  @Input({required: true}) users!: User[];
-  tasks: Task[] = DUMMY_TASKS;
   isTaskDialogOpen: boolean = false;
+  private taskService: TaskService;
 
-  get userTasks(): Task[] | undefined {
-    return this.tasks.filter(task => task.userId === this.user.id);
+  constructor(taskService: TaskService) {
+    this.taskService = taskService;
   }
 
-  removeTask(taskId: string): void {
-    const index = this.tasks.findIndex(task => task.taskId === taskId);
-    if (index > -1) {
-      this.tasks.splice(index, 1);
-    }
+  get userTasks(): Task[] | undefined {
+    return this.taskService.getUserTasks(this.user.id);
   }
 
   onOpenTaskDialog(): void {
@@ -34,5 +31,4 @@ export class TicketComponent {
   onCloseTaskDialog(): void {
     this.isTaskDialogOpen = false;
   }
-
 }
