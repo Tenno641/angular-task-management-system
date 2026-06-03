@@ -1,6 +1,7 @@
 # Task Management System 
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Using Modules Not Standalone Components.
 
 ## Development server
 

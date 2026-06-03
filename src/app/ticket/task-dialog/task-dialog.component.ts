@@ -1,14 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import type {Task} from '../task/task.model';
-import type {User} from '../user/user.model';
-import {FormsModule} from '@angular/forms';
-import {NgSelectComponent} from '@ng-select/ng-select';
+import type {User} from '../../user/user.model';
 import {TaskService} from '../task/task.service';
-import {UserService} from '../user/user.service';
+import {UserService} from '../../user/user.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-task-dialog',
-  imports: [FormsModule, NgSelectComponent],
+  standalone: false,
   templateUrl: './task-dialog.component.html',
   styleUrl: './task-dialog.component.css'
 })

@@ -1,14 +1,10 @@
 import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {HeaderComponent} from './header/header.components';
-import {UserComponent} from './user/user.component';
-import {TicketComponent} from './ticket/ticket.component';
 import {UserService} from './user/user.service';
 import {User} from './user/user.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, UserComponent, TicketComponent],
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
