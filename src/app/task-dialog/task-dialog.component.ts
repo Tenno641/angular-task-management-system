@@ -17,15 +17,7 @@ export class TaskDialogComponent {
   @Output() dialogClosed = new EventEmitter();
   users: User[];
   tasks: Task[];
-  private taskService: TaskService;
-
-  constructor(taskService: TaskService, userService: UserService) {
-    this.taskService = taskService;
-    this.users = userService.getAllUsers();
-    this.tasks = taskService.getAllTasks();
-  }
-
-  formModel : Task = {
+  formModel: Task = {
     userId: '',
     taskId: '',
     title: '',
@@ -36,6 +28,13 @@ export class TaskDialogComponent {
     relatedTasks: [],
     relatedPeople: []
   };
+  private taskService: TaskService;
+
+  constructor(taskService: TaskService, userService: UserService) {
+    this.taskService = taskService;
+    this.users = userService.getAllUsers();
+    this.tasks = taskService.getAllTasks();
+  }
 
   onSubmitTask(): void {
     this.formModel.userId = this.userId;

@@ -1,7 +1,7 @@
 <div class="ticket">
   <div class="ticket-date">
-    <p class="ticket-date-created">Created: {{ selectedTask.createdDate }}</p>
-    <p class="ticket-date-due">Due: {{ selectedTask.dueDate }}</p>
+    <p class="ticket-date-created">Created: {{ selectedTask.createdDate | date: "fullDate" }}</p>
+    <p class="ticket-date-due">Due: {{ selectedTask.dueDate | date: "fullDate" }}</p>
   </div>
   <div class="ticket-title">{{ selectedTask.title }}</div>
   <div class="ticket-description">{{ selectedTask.description }}</div>

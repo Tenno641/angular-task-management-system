@@ -108,6 +108,11 @@ export class TaskService {
     }
   ]
 
+  get Count() {
+    console.log(`count ${this.tasks.length}`)
+    return this.tasks.length;
+  }
+
   getUserTasks(userId: string): Task[] {
     return this.tasks.filter(task => task.userId === userId);
   }
@@ -115,18 +120,13 @@ export class TaskService {
   removeTask(id: string) {
     console.log(`received task id to be deleted ${id}`)
     const index = this.tasks.findIndex(task => task.taskId === id);
-    if (index > -1){
+    if (index > -1) {
       this.tasks.splice(index, 1);
     }
   }
 
   addTask(task: Task) {
     this.tasks.push(task);
-  }
-
-  get Count() {
-    console.log(`count ${this.tasks.length}`)
-    return this.tasks.length;
   }
 
   getAllTasks() {
